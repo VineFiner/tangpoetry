@@ -1,7 +1,7 @@
 import Vapor
 
 struct ResetPasswordEmail: Email {
-    let templateName: String = "reset_password"
+    var templateName: String = "reset_password"
     var templateData: [String : String] {
         ["verify_url": resetURL]
     }

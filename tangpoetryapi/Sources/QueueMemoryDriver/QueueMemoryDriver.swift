@@ -1,5 +1,6 @@
 import Queues
 import Vapor
+import NIOConcurrencyHelpers
 
 extension Application.Queues.Provider {
     public static func memory() throws -> Self {
@@ -22,7 +23,7 @@ struct MemoryQueuesDriver: QueuesDriver {
 struct TestQueue: Queue {
     static var queue: [JobIdentifier] = []
     static var jobs: [JobIdentifier: JobData] = [:]
-    static var lock: Lock = .init()
+    static var lock: NIOLock = .init()
     
     let context: QueueContext
     
